@@ -46,6 +46,7 @@ namespace AspNetCore
             app.UseStaticFiles();
 
             app.UseRouting(); // bu kaldýrýlsa url a gitmez. 
+            app.UseMiddleware<ResponseEditingMiddleware>();
             app.UseMiddleware<RequestEditingMiddleware>();
             app.UseAuthorization();
 
