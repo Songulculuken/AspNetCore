@@ -45,13 +45,20 @@ namespace AspNetCore
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            // Controller => View
+            // HomeController => Home
+            // Index() => index.cshtml
             app.UseRouting(); // bu kaldýrýlsa url a gitmez. 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "productRoute",
+                    pattern: "Songul/{action}",
+                    defaults: new { Controller = "Home" }
+                    );
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{Controller}/{Action}",
+                    pattern: "{Controller}/{Action}/{id?}", //Id deðeri göndermesen bile ilgili sayfa çalýþmasý için soru iþareti konur.// localhost/Product/Detail/1.{id:int} dersek id integer olmak zorunda vs.
                     defaults:new {Controller="Home",Action="Index"}  
                     );
             });
