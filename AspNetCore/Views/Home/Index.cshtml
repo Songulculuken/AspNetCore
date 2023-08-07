@@ -1,15 +1,15 @@
 ﻿@{
     int age = 25;
-    string value = string.Empty;
-    if(age>18)
-    {
-        value = "Yaşı 18 den büyük";
-    }
-    else
-    {
-        value = "Yaşo 18 den küçük";
-    }
+    //string value = string.Empty;
+    //if(age>18)
+    //{
+    //    value = "Yaşı 18 den büyük";
+    //}
+    //else
+    //{
+    //    value = "Yaşo 18 den küçük";
+    //}
 }
 <p>
-    Durum = @value
+    Durum = @(age>18?"Yaşı 18 den büyük":"Yaşı 18 den küçük")
 </p>
