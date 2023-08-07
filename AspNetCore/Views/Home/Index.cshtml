@@ -14,8 +14,17 @@
         return number1 + number2;
     }
     var result = Calculate(1, 2);
+
+    List<string> names = new() { "Songül", "Sinem", "Aslı" };
+}
+@foreach (var item in names) // Tab Tab
+{
+    <p>
+        @item
+        @(item=="Songül"||item=="Aslı"?"yazılımcı":"İnsan Kaynakları")
+    </p>
 }
 <p>
     Durum = @(age>18?"Yaşı 18 den büyük":"Yaşı 18 den küçük") <br />
-    Durums = @result;
+    Durum2 = @result;
 </p>
