@@ -10,6 +10,7 @@ namespace AspNetCore.Controllers
             //viewbag,viewdata,tempdata,model
             ViewBag.Name = "Songül1";
             ViewData["Name"] = "Sinem1";
+            TempData["Name"] = "Aslı1";
             return View();
         }
     }
