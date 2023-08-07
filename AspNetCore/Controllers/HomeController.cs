@@ -1,5 +1,6 @@
 ﻿using AspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AspNetCore.Controllers
 {
@@ -15,7 +16,9 @@ namespace AspNetCore.Controllers
             ViewBag.Name = "Songül1";
             ViewData["Name"] = "Sinem1";
             TempData["Name"] = "Aslı1";
-
+            //Dictionary<string, object> dictionary = new();
+            //var list = dictionary.Values;
+            var values = int.Parse(RouteData.Values["id"].ToString());
             Customer customer = new() { Age = 25, FirstName = "Songül", LastName = "Çuluken" };
             return View(customer);
         }
