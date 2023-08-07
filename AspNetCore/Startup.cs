@@ -25,6 +25,7 @@ namespace AspNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
@@ -41,13 +42,20 @@ namespace AspNetCore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting(); // bu kaldýrýlsa url a gitmez. 
-            app.UseMiddleware<ResponseEditingMiddleware>();
-            app.UseMiddleware<RequestEditingMiddleware>();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{Controller}/{Action}"
+                    );
+            });
+            //app.UseMiddleware<ResponseEditingMiddleware>();
+            //app.UseMiddleware<RequestEditingMiddleware>();
             app.UseAuthorization();
 
             //ysk.com.tr/
