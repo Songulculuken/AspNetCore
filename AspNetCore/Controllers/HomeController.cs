@@ -8,7 +8,8 @@ namespace AspNetCore.Controllers
     {
         //ysk.com.tr/Home/Index
         //RedirectToAction aslında bir IActionResulttır.View de IActionResulttır.
-        [Route("[controller]/[action]")]
+        //[Route("[controller]/[action]")] Attribute Routing ile yazılan şeyler startuptaki routing i ezer.
+        //[Route("Songul")] Attribute Routing 
         public IActionResult Index()
         {
             IText test = new Text();
