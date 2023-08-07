@@ -9,7 +9,13 @@
     //{
     //    value = "Yaşo 18 den küçük";
     //}
+    int Calculate(int number1, int number2) //C# da method isimleri büyük harfle başlar
+    {
+        return number1 + number2;
+    }
+    var result = Calculate(1, 2);
 }
 <p>
-    Durum = @(age>18?"Yaşı 18 den büyük":"Yaşı 18 den küçük")
+    Durum = @(age>18?"Yaşı 18 den büyük":"Yaşı 18 den küçük") <br />
+    Durums = @result;
 </p>
