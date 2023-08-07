@@ -7,6 +7,8 @@ namespace AspNetCore.Controllers
         //ysk.com.tr/Home/Index
         public IActionResult Index()
         {
+            //viewbag,viwdata,tempdata,model
+            ViewBag.Name = "Songül1";
             return View();
         }
     }
