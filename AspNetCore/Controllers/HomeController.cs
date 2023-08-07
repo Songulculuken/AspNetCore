@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetCore.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Controllers
 {
@@ -11,7 +12,9 @@ namespace AspNetCore.Controllers
             ViewBag.Name = "Songül1";
             ViewData["Name"] = "Sinem1";
             TempData["Name"] = "Aslı1";
-            return View();
+
+            Customer customer = new() { Age = 25, FirstName = "Songül", LastName = "Çuluken" };
+            return View(customer);
         }
     }
 }
