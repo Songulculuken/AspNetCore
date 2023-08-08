@@ -1,6 +1,7 @@
 ﻿using AspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AspNetCore.Controllers
 {
@@ -10,6 +11,7 @@ namespace AspNetCore.Controllers
         //RedirectToAction aslında bir IActionResulttır.View de IActionResulttır.
         //[Route("[controller]/[action]")] Attribute Routing ile yazılan şeyler startuptaki routing i ezer.
         //[Route("Songul")] Attribute Routing 
+        [HttpGet]
         public IActionResult Index()
         {
             var customers = CustomerContext.Customers;
@@ -26,18 +28,41 @@ namespace AspNetCore.Controllers
             //Customer customer = new() { Age = 25, FirstName = "Songül", LastName = "Çuluken" };
             //return View(customer);
         }
-        public interface IText
+        [HttpGet]
+        public IActionResult Create()
         {
 
+            return View();
         }
-        public class Text : IText
+        [HttpPost]  
+        public IActionResult CreateWithForm()
         {
-
+            var firstName= HttpContext.Request.Form["firstName"].ToString();   
+            var lastName= HttpContext.Request.Form["lastName"].ToString();   
+            var age= int.Parse(HttpContext.Request.Form["Age"].ToString());
+            var lastCustomer = CustomerContext.Customers.Last();
+            var id=lastCustomer.Id+1;
+            CustomerContext.Customers.Add(new Customer
+            {
+                Age = age,
+                LastName = lastName,
+                FirstName = firstName,  
+                Id = id
+            });
+            return RedirectToAction("Index");  
         }
-        public class Text2 : IText 
-        { 
+        //public interface IText
+        //{
 
-        }
+        //}
+        //public class Text : IText
+        //{
+
+        //}
+        //public class Text2 : IText 
+        //{ 
+
+        //}
 
     }
 }
