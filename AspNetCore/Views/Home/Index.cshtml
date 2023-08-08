@@ -1,5 +1,5 @@
-﻿@model AspNetCore.Models.Customer
-@{
+﻿@*@model AspNetCore.Models.Customer*@
+@*@{
     int age = 25;
     //string value = string.Empty;
     //if(age>18)
@@ -47,4 +47,20 @@
     Last Name = @Model.LastName;
     <br />
     Age = @Model.Age;
-</p>
+</p>*@
+@model List<AspNetCore.Models.Customer>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Age</td>
+        </tr>
+    }
+</table>

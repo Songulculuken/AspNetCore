@@ -12,17 +12,19 @@ namespace AspNetCore.Controllers
         //[Route("Songul")] Attribute Routing 
         public IActionResult Index()
         {
-            IText test = new Text();
-            IText test2 = new Text2();
-            //viewbag,viewdata,tempdata,model
-            ViewBag.Name = "Songül1";
-            ViewData["Name"] = "Sinem1";
-            TempData["Name"] = "Aslı1";
-            //Dictionary<string, object> dictionary = new();
-            //var list = dictionary.Values;
-            //var values = int.Parse(RouteData.Values["id"].ToString()); RoutData ile id çekme
-            Customer customer = new() { Age = 25, FirstName = "Songül", LastName = "Çuluken" };
-            return View(customer);
+            var customers = CustomerContext.Customers;
+            return View(customers);
+            //IText test = new Text();
+            //IText test2 = new Text2();
+            ////viewbag,viewdata,tempdata,model
+            //ViewBag.Name = "Songül1";
+            //ViewData["Name"] = "Sinem1";
+            //TempData["Name"] = "Aslı1";
+            ////Dictionary<string, object> dictionary = new();
+            ////var list = dictionary.Values;
+            ////var values = int.Parse(RouteData.Values["id"].ToString()); RoutData ile id çekme
+            //Customer customer = new() { Age = 25, FirstName = "Songül", LastName = "Çuluken" };
+            //return View(customer);
         }
         public interface IText
         {

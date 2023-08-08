@@ -59,7 +59,7 @@ namespace AspNetCore
                 //    );
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{Controller}/{Action}/{id}", //Id deðeri göndermesen bile ilgili sayfa çalýþmasý için soru iþareti konur.// localhost/Product/Detail/1.{id:int} dersek id integer olmak zorunda vs.
+                    pattern: "{Controller}/{Action}/{id?}", //Id deðeri göndermesen bile ilgili sayfa çalýþmasý için soru iþareti konur.// localhost/Product/Detail/1.{id:int} dersek id integer olmak zorunda vs.
                     defaults:new {Controller="Home",Action="Index"}  
                     );
             });
