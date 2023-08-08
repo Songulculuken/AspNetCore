@@ -49,7 +49,7 @@ namespace AspNetCore
             // HomeController => Home
             // Index() => index.cshtml
             app.UseRouting(); // bu kaldırılsa url a gitmez. 
-            //app.UseStaticFiles();//klasörlerin dışarıya açılmasını sağlar. Bu sayede paketleri yükleyebiliriz.
+            app.UseStaticFiles();//klasörlerin dışarıya açılmasını sağlar. Bu sayede paketleri yükleyebiliriz. Mesela bu kod olmasaydı css dosyasına ulaşamazdık.
             app.UseEndpoints(endpoints =>
             { 
                 //daha özel rout u daha yukarıya yazmalıyız. Yukarıdan aşağıya gider.
