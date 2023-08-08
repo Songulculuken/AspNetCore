@@ -44,11 +44,12 @@ namespace AspNetCore
             }
             
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+         
             // Controller => View
             // HomeController => Home
             // Index() => index.cshtml
             app.UseRouting(); // bu kaldırılsa url a gitmez. 
+            //app.UseStaticFiles();//klasörlerin dışarıya açılmasını sağlar. Bu sayede paketleri yükleyebiliriz.
             app.UseEndpoints(endpoints =>
             { 
                 //daha özel rout u daha yukarıya yazmalıyız. Yukarıdan aşağıya gider.
