@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -50,6 +52,11 @@ namespace AspNetCore
             // Index() => index.cshtml
             app.UseRouting(); // bu kaldırılsa url a gitmez. 
             app.UseStaticFiles();//klasörlerin dışarıya açılmasını sağlar. Bu sayede paketleri yükleyebiliriz. Mesela bu kod olmasaydı css dosyasına ulaşamazdık.
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                RequestPath="/songul",
+                FileProvider=new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"node_modules"))
+            });
             app.UseEndpoints(endpoints =>
             { 
                 //daha özel rout u daha yukarıya yazmalıyız. Yukarıdan aşağıya gider.

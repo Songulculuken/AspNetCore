@@ -6,8 +6,8 @@ namespace AspNetCore.Models
     {
         public static List<Customer> Customers = new()
         {
-            new Customer() { FirstName="Songül", LastName="ÇULUKEN" , Age=25},
-            new Customer() { FirstName="Sinem", LastName="OĞRAŞ", Age=26}
+            new Customer() {Id=1, FirstName="Songül", LastName="ÇULUKEN" , Age=25},
+            new Customer() {Id=2, FirstName="Sinem", LastName="OĞRAŞ", Age=26}
         };
     }
 }
