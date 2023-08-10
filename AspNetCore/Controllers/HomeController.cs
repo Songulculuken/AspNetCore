@@ -34,22 +34,57 @@ namespace AspNetCore.Controllers
 
             return View();
         }
-        [HttpPost]  
+        [HttpPost]
         public IActionResult CreateWithForm()
         {
-            var firstName= HttpContext.Request.Form["firstName"].ToString();   
-            var lastName= HttpContext.Request.Form["lastName"].ToString();   
-            var age= int.Parse(HttpContext.Request.Form["Age"].ToString());
-            var lastCustomer = CustomerContext.Customers.Last();
-            var id=lastCustomer.Id+1;
+            var firstName = HttpContext.Request.Form["firstName"].ToString();
+            var lastName = HttpContext.Request.Form["lastName"].ToString();
+            var age = int.Parse(HttpContext.Request.Form["Age"].ToString());
+            Customer lastCustomer = null;
+            if (CustomerContext.Customers.Count > 0)
+            {
+                lastCustomer = CustomerContext.Customers.Last();
+
+            }
+            int id = 1;
+            if (lastCustomer != null)
+            {
+                id = lastCustomer.Id + 1;
+            }
+
             CustomerContext.Customers.Add(new Customer
             {
                 Age = age,
                 LastName = lastName,
-                FirstName = firstName,  
+                FirstName = firstName,
                 Id = id
             });
-            return RedirectToAction("Index");  
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Remove()
+        {
+            var id = int.Parse(RouteData.Values["id"].ToString()); //id yi bulup getirme
+            var removedCustomer = CustomerContext.Customers.Find(a => a.Id == id); //customerslar içinde her bir kayıt a. Predicate delege kullanma
+            CustomerContext.Customers.Remove(removedCustomer);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Update()
+        {
+            var id = int.Parse(RouteData.Values["id"].ToString());
+            var updatedCustomer = CustomerContext.Customers.FirstOrDefault(a => a.Id == id);
+            return View(updatedCustomer);
+        }
+        [HttpPost]
+        public IActionResult UpdateCustomer()
+        {
+            var id = int.Parse(HttpContext.Request.Form["id"].ToString());
+            var updatedCustomer = CustomerContext.Customers.FirstOrDefault(I => I.Id == id);
+            updatedCustomer.FirstName = HttpContext.Request.Form["firstName"].ToString();
+            updatedCustomer.LastName = HttpContext.Request.Form["lastName"].ToString();
+            updatedCustomer.Age = int.Parse(HttpContext.Request.Form["age"].ToString());
+            return RedirectToAction("Index");
         }
         //public interface IText
         //{
