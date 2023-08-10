@@ -32,33 +32,42 @@ namespace AspNetCore.Controllers
         public IActionResult Create()
         {
 
-            return View();
+            return View(new Customer());
         }
         [HttpPost]
-        public IActionResult CreateWithForm()
+        //MODEL Binding CreateWithForm(Customer customer)
+        public IActionResult CreateWithForm(Customer customer)
         {
-            var firstName = HttpContext.Request.Form["firstName"].ToString();
-            var lastName = HttpContext.Request.Form["lastName"].ToString();
-            var age = int.Parse(HttpContext.Request.Form["Age"].ToString());
+            //Model Binding sayesinde alttaki 3 kod satırına ihtiyacımız olmuyor.
+            //var firstName = HttpContext.Request.Form["firstName"].ToString();
+            //var lastName = HttpContext.Request.Form["lastName"].ToString();
+            //var age = int.Parse(HttpContext.Request.Form["Age"].ToString());
             Customer lastCustomer = null;
             if (CustomerContext.Customers.Count > 0)
             {
                 lastCustomer = CustomerContext.Customers.Last();
 
             }
-            int id = 1;
+            customer.Id = 1;
             if (lastCustomer != null)
             {
-                id = lastCustomer.Id + 1;
+                customer.Id = lastCustomer.Id + 1;
             }
-
-            CustomerContext.Customers.Add(new Customer
-            {
-                Age = age,
-                LastName = lastName,
-                FirstName = firstName,
-                Id = id
-            });
+            //Model binding sayesinde buna da ihtiyacımız yok
+            //int id = 1;
+            //if (lastCustomer != null)
+            //{
+            //    id = lastCustomer.Id + 1;
+            //}
+            CustomerContext.Customers.Add(customer);
+            //Model Binding sayesinde buna da ihtiyacımız yok.
+            //CustomerContext.Customers.Add(new Customer
+            //{
+            //    Age = age,
+            //    LastName = lastName,
+            //    FirstName = firstName,
+            //    Id = id
+            //});
             return RedirectToAction("Index");
         }
         [HttpGet]
