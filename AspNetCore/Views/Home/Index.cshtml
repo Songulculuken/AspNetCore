@@ -48,17 +48,14 @@
     <br />
     Age = @Model.Age;
 </p>*@
+
 @using AspNetCore.Models
 @addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 @model List<Customer>
-<html xlmns="http://www.w3.org/1999/xhtml">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<head>
-    <title>Customer-List</title>
-    <link href="~/style.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
         <h3>Customer List</h3>
         <a asp-action="Create" asp-controller="Home">Ekle</a>
         <table class="table table-hover table-bordered">
@@ -84,8 +81,7 @@
                 }
             </tbody>
         </table>
-    </div>
-</body>
-</html>
+
+
 
 
