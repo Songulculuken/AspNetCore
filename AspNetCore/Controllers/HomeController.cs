@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace AspNetCore.Controllers
 {
@@ -36,7 +37,7 @@ namespace AspNetCore.Controllers
         }
         [HttpPost]
         //MODEL Binding CreateWithForm(Customer customer)
-        public IActionResult CreateWithForm(Customer customer)
+        public IActionResult Create(Customer customer)
         {
             //Model Binding sayesinde alttaki 3 kod satırına ihtiyacımız olmuyor.
             //var firstName = HttpContext.Request.Form["firstName"].ToString();
@@ -71,28 +72,34 @@ namespace AspNetCore.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult Remove()
+        public IActionResult Remove(int id)
         {
-            var id = int.Parse(RouteData.Values["id"].ToString()); //id yi bulup getirme
+            //Model Binding sayesinde gerek kalmıyor 
+            //var id = int.Parse(RouteData.Values["id"].ToString()); //id yi bulup getirme 
             var removedCustomer = CustomerContext.Customers.Find(a => a.Id == id); //customerslar içinde her bir kayıt a. Predicate delege kullanma
             CustomerContext.Customers.Remove(removedCustomer);
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult Update()
+        public IActionResult Update(int id)
         {
-            var id = int.Parse(RouteData.Values["id"].ToString());
+            // Model Binding sayesinde gerek kalmıyor
+            //var id = int.Parse(RouteData.Values["id"].ToString());
             var updatedCustomer = CustomerContext.Customers.FirstOrDefault(a => a.Id == id);
             return View(updatedCustomer);
         }
         [HttpPost]
-        public IActionResult UpdateCustomer()
+        public IActionResult Update(Customer customer)
         {
-            var id = int.Parse(HttpContext.Request.Form["id"].ToString());
-            var updatedCustomer = CustomerContext.Customers.FirstOrDefault(I => I.Id == id);
-            updatedCustomer.FirstName = HttpContext.Request.Form["firstName"].ToString();
-            updatedCustomer.LastName = HttpContext.Request.Form["lastName"].ToString();
-            updatedCustomer.Age = int.Parse(HttpContext.Request.Form["age"].ToString());
+            //Model binding sayesinde gerek kalmıyor
+            //var id = int.Parse(HttpContext.Request.Form["id"].ToString());
+            var updatedCustomer = CustomerContext.Customers.FirstOrDefault(I => I.Id == customer.Id);
+            //updatedCustomer.FirstName = HttpContext.Request.Form["firstName"].ToString();
+            //updatedCustomer.LastName = HttpContext.Request.Form["lastName"].ToString();
+            //updatedCustomer.Age = int.Parse(HttpContext.Request.Form["age"].ToString());
+            updatedCustomer.FirstName = customer.FirstName; 
+            updatedCustomer.LastName = customer.LastName;
+            updatedCustomer.Age= customer.Age;  
             return RedirectToAction("Index");
         }
         //public interface IText
