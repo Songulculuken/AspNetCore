@@ -49,9 +49,9 @@ namespace AspNetCore.Controllers
         }
         public IActionResult CreateWithData()
         {
-            FileInfo info = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", Guid.NewGuid().ToString()+".txt"));
+            FileInfo info = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", Guid.NewGuid().ToString()+".txt")); //benzersiz bir isim oluşturma dosya ismi
             StreamWriter writer=info.CreateText();
-            writer.Write("Merhaba ben Songül");
+            writer.Write("Merhaba ben Songül"); //txt dosyasının içine yazılıyor.
             writer.Close();
             return RedirectToAction("List");  
         }
