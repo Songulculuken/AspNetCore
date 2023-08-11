@@ -5,7 +5,7 @@
 <a asp-action="Create">Ekle</a>
 <div class="row">
     <div class="col-4">
-        @await Component.InvokeAsync("News")
+        @await Component.InvokeAsync("News",new {@color="blue"})
        @* <partial name="_NewsPartial" model="NewsContext.List"></partial> partial kullanım*@
     </div>
     <div class="col-8">
