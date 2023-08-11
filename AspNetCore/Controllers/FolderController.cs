@@ -5,6 +5,7 @@ namespace AspNetCore.Controllers
 {
     public class FolderController: Controller
     {
+        //klasörü listeleme
         public IActionResult List() 
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")); //classtan yardım alarak klasördekileri listeleme
