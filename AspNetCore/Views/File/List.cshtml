@@ -5,7 +5,8 @@
 <a asp-action="Create">Ekle</a>
 <div class="row">
     <div class="col-4">
-        <partial name="_NewsPartial" model="NewsContext.List"></partial>
+        @await Component.InvokeAsync("News")
+       @* <partial name="_NewsPartial" model="NewsContext.List"></partial> partial kullanım*@
     </div>
     <div class="col-8">
         <table class="table table-hover table-bordered">
