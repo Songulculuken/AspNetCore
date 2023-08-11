@@ -65,7 +65,7 @@ namespace AspNetCore.Controllers
         {
             //1.jpg 1.jpg farklı resim ama aynı isimlere sahip 2. resim yüklenmesin
             // Guid.NewGuid(); //benzersiz isimler üretsin
-            if (formFile.ContentType.StartsWith("image/") && (formFile.ContentType.EndsWith("png") ||formFile.ContentType.EndsWith("jpg") || formFile.ContentType.EndsWith("jpeg"))) //dosya kontrolü
+            if (formFile.ContentType.StartsWith("image/") && (formFile.ContentType.EndsWith("png") || formFile.ContentType.EndsWith("jpg") || formFile.ContentType.EndsWith("jpeg"))) //dosya kontrolü
             {
                 var ext = Path.GetExtension(formFile.FileName); // uzantıyı bul ver
                 var path = Directory.GetCurrentDirectory() + "/wwwroot" + "/images/" + Guid.NewGuid() + ext; ; //dosyayı kaydedeceği yer
