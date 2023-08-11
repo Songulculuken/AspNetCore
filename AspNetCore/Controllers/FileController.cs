@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.IO;
 
 namespace AspNetCore.Controllers
@@ -45,6 +46,14 @@ namespace AspNetCore.Controllers
                 info.Delete();
             }
             return RedirectToAction("List");
+        }
+        public IActionResult CreateWithData()
+        {
+            FileInfo info = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", Guid.NewGuid().ToString()+".txt"));
+            StreamWriter writer=info.CreateText();
+            writer.Write("Merhaba ben Songül");
+            writer.Close();
+            return RedirectToAction("List");  
         }
     }
 }
