@@ -2,12 +2,14 @@
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-<table>
+<a asp-action="Create">Create</a>
+<table class="table table-hover table-bordered">
     <thead>
         <tr>
             <th>Ad</th>
             <th>Oluşturulma Zamanı</th>
             <th>Path</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +19,9 @@
                 <td>@item.Name</td>
                 <td>@item.CreationTime</td>
                 <td>@item.FullName</td>
+                <td>
+                    <a asp-action="Remove" asp-route-folderName="@item.Name">Remove</a>
+                </td>
             </tr>
         }
     </tbody>
