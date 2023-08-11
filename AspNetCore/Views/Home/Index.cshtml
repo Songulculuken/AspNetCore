@@ -55,32 +55,31 @@
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-
-        <h3>Customer List</h3>
-        <a asp-action="Create" asp-controller="Home">Ekle</a>
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Age</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.FirstName</td>
-                        <td>@item.LastName</td>
-                        <td>@item.Age</td>
-                        <td>
-                            <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id">Update</a>
-                            <a asp-action="Remove" asp-controller="Home" asp-route-id="@item.Id">Remove</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<h3>Customer List</h3>
+<a asp-action="Create" asp-controller="Home">Ekle</a>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Age</td>
+                <td>
+                    <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id">Update</a>
+                    <a asp-action="Remove" asp-controller="Home" asp-route-id="@item.Id">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 
 

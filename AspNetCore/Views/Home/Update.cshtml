@@ -1,31 +1,24 @@
 ﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 @model AspNetCore.Models.Customer
-<html xlmns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Update Customer</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
-        <h3> Update - Customer</h3>
-        <form asp-action="Update" asp-controller="Home" method="post">
-            <input type="hidden" name="id" value="@Model.Id" /> @*gizli değer tutma kullanıcılar göremez*@
-            <div class="form-group">
-                <label> First Name :</label>
-                <input asp-for="@Model.FirstName" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label> Last Name :</label>
-                <input asp-for="@Model.LastName" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label> Age :</label>
-                <input asp-for="@Model.Age" class="form-control" />
-            </div>
-            <div class="form-group text-right">
-               <button class="btn btn-primary" type="submit">Save</button>
-            </div>
-        </form>
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<h3> Update - Customer</h3>
+<form asp-action="Update" asp-controller="Home" method="post">
+    <input type="hidden" name="id" value="@Model.Id" /> @*gizli değer tutma kullanıcılar göremez*@
+    <div class="form-group">
+        <label> First Name :</label>
+        <input asp-for="@Model.FirstName" class="form-control" />
     </div>
-</body>
-</html>
+    <div class="form-group">
+        <label> Last Name :</label>
+        <input asp-for="@Model.LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label> Age :</label>
+        <input asp-for="@Model.Age" class="form-control" />
+    </div>
+    <div class="form-group text-right">
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+</form>
