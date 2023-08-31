@@ -43,33 +43,39 @@ namespace AspNetCore.Controllers
             //var firstName = HttpContext.Request.Form["firstName"].ToString();
             //var lastName = HttpContext.Request.Form["lastName"].ToString();
             //var age = int.Parse(HttpContext.Request.Form["Age"].ToString());
-            Customer lastCustomer = null;
-            if (CustomerContext.Customers.Count > 0)
+            // var control = ModelState.IsValid;
+            //var errors = ModelState.Values.Select(ı => ı.Errors);//Property, Gelen sonuca göre Doğrulama 
+            if(ModelState.IsValid)
             {
-                lastCustomer = CustomerContext.Customers.Last();
+                Customer lastCustomer = null;
+                if (CustomerContext.Customers.Count > 0)
+                {
+                    lastCustomer = CustomerContext.Customers.Last();
 
+                }
+                customer.Id = 1;
+                if (lastCustomer != null)
+                {
+                    customer.Id = lastCustomer.Id + 1;
+                }
+                //Model binding sayesinde buna da ihtiyacımız yok
+                //int id = 1;
+                //if (lastCustomer != null)
+                //{
+                //    id = lastCustomer.Id + 1;
+                //}
+                CustomerContext.Customers.Add(customer);
+                //Model Binding sayesinde buna da ihtiyacımız yok.
+                //CustomerContext.Customers.Add(new Customer
+                //{
+                //    Age = age,
+                //    LastName = lastName,
+                //    FirstName = firstName,
+                //    Id = id
+                //});
+                return RedirectToAction("Index");
             }
-            customer.Id = 1;
-            if (lastCustomer != null)
-            {
-                customer.Id = lastCustomer.Id + 1;
-            }
-            //Model binding sayesinde buna da ihtiyacımız yok
-            //int id = 1;
-            //if (lastCustomer != null)
-            //{
-            //    id = lastCustomer.Id + 1;
-            //}
-            CustomerContext.Customers.Add(customer);
-            //Model Binding sayesinde buna da ihtiyacımız yok.
-            //CustomerContext.Customers.Add(new Customer
-            //{
-            //    Age = age,
-            //    LastName = lastName,
-            //    FirstName = firstName,
-            //    Id = id
-            //});
-            return RedirectToAction("Index");
+            return View();
         }
         [HttpGet]
         public IActionResult Remove(int id)
