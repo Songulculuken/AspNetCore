@@ -58,13 +58,17 @@ namespace AspNetCore
                 FileProvider=new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"node_modules"))
             });
             app.UseEndpoints(endpoints =>
-            { 
+            {
                 //daha özel rout u daha yukarýya yazmalýyýz. Yukarýdan aþaðýya gider.
                 //endpoints.MapControllerRoute(
                 //    name: "productRoute",
                 //    pattern: "Songul/{action}",
                 //    defaults: new { Controller = "Home" }
                 //    );
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{Area}/{Controller=Home}/{Action=Index}/{id?}"
+                    );
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{Controller}/{Action}/{id?}", //Id deðeri göndermesen bile ilgili sayfa çalýþmasý için soru iþareti konur.// localhost/Product/Detail/1.{id:int} dersek id integer olmak zorunda vs.
