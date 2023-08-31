@@ -12,7 +12,8 @@ namespace AspNetCore.Models
         [Required(ErrorMessage ="Soyad alanı boş geçilemez")]
         [MinLength(3, ErrorMessage ="Soyad alanı en az 3 karakter olabilir")]
         public string LastName { get; set; }
-        [Range(18 , 40, ErrorMessage= "Yaş değeri en az 18, en fazla 40 olabilir")] // değer aralığı
+        [Required(ErrorMessage ="Yaş alanı boş geçilemez")]
+        [Range(18,40, ErrorMessage= "Yaş değeri en az 18, en fazla 40 olabilir")] // değer aralığı
         public int Age { get; set; }
     }
 }

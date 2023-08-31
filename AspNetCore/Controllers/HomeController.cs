@@ -45,6 +45,10 @@ namespace AspNetCore.Controllers
             //var age = int.Parse(HttpContext.Request.Form["Age"].ToString());
             // var control = ModelState.IsValid;
             //var errors = ModelState.Values.Select(ı => ı.Errors);//Property, Gelen sonuca göre Doğrulama 
+            if(customer.FirstName == "Songül")
+            {
+                ModelState.AddModelError("", "Firstname songül olamaz");
+            }
             if(ModelState.IsValid)
             {
                 Customer lastCustomer = null;
