@@ -48,12 +48,13 @@
     <br />
     Age = @Model.Age;
 </p>*@
-
+@addTagHelper AspNetCore.TagHelpers.*,AspNetCore
 @model List<Customer>
 @{
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 <h3>Customer List</h3>
+<paragraph short-description="Songül"></paragraph>
 <div class="row">
     <div class="col-4">
         @await Component.InvokeAsync("News")
