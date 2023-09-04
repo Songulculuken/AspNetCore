@@ -27,6 +27,7 @@ namespace AspNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -51,6 +52,7 @@ namespace AspNetCore
             // HomeController => Home
             // Index() => index.cshtml
             app.UseRouting(); // bu kaldýrýlsa url a gitmez. 
+            app.UseSession(); //Session kullanmamýz için
             app.UseStaticFiles();//klasörlerin dýþarýya açýlmasýný saðlar. Bu sayede paketleri yükleyebiliriz. Mesela bu kod olmasaydý css dosyasýna ulaþamazdýk.
             app.UseStaticFiles(new StaticFileOptions
             {
