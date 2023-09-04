@@ -1,4 +1,5 @@
-﻿using AspNetCore.Models;
+﻿using AspNetCore.Filters;
+using AspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,7 @@ namespace AspNetCore.Controllers
             return View(new Customer());
         }
         [HttpPost]
+        [ValidFirstName]
         //MODEL Binding CreateWithForm(Customer customer)
         public IActionResult Create(Customer customer)
         {
