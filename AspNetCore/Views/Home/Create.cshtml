@@ -31,4 +31,8 @@
     </div>
     <div  asp-validation-summary="ModelOnly" class="text-danger"></div>
 </form>
-
+@section Scripts{
+   <script src="~/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script> @*Sayfa yenilenmeden uyarı veriyor*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>  @*Sayfa yenilenmeden uyarı veriyor*@  
+}

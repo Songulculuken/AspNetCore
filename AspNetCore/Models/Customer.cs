@@ -5,6 +5,8 @@ namespace AspNetCore.Models
     //DataAnnotation
     public class Customer
     {
+        [Required(ErrorMessage ="Id alanı gereklidir")]
+        [Range(1,int.MaxValue)]
         public int Id { get; set; }
         [Required(ErrorMessage ="Ad alanı boş geçilemez")] //zorunlu alan dataannotation ile validation
         [MaxLength(30, ErrorMessage ="Ad alanı en fazşa 30 karakter olabilir")]
